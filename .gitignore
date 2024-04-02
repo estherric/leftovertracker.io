@@ -1,0 +1,5 @@
+tools/output/
+tools/settings/data/
+main
+.ccls-cache
+.breakpoints
