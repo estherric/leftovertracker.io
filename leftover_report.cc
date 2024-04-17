@@ -20,32 +20,36 @@
 // to tell the compiler that each function belongs to the LeftoverReport
 // class.
 // ===================================================================
+// Leftover Report
+LeftoverReport::LeftoverReport(const std::vector<LeftoverRecord>& leftover_records)
+    : leftover_records_(leftover_records) {}
+
 // Most Common Leftovers
-const std::vector<std::string>& LeftoverReport::GetMostCommonLeftovers() const {
+const std::vector<std::string> LeftoverReport::GetMostCommonLeftovers() const {
   return most_common_leftovers_;
 }
 
 // Most Costly Meals
-const std::vector<std::string>& LeftoverReport::GetMostCostlyMeals() const {
+const std::vector<std::string> LeftoverReport::GetMostCostlyMeals() const {
   return most_costly_meals_;
 }
 
 // Total Cost of Leftovers
-double std::vector<std::double> LeftoverReport::GetTotalCostOfLeftovers()
+double LeftoverReport::GetTotalCostOfLeftovers()
     const {
   return total_cost_of_leftovers_;
 }
 
 // Most Common Reasons of Leftovers
-std::vector<std::string>& LeftoverReport::GetMostCommonReasons() const {
+const std::vector<std::string> LeftoverReport::GetMostCommonReasons() const {
   return most_common_reasons_;
 }
 // Most Common Disposal Mechanism
-std::vector<std::string>& LeftoverReport::GetMostCommonDisposalMechanism() const {
+std::vector<std::string> LeftoverReport::GetMostCommonDisposalMechanisms() const {
   return most_common_disposal_mechanisms_;
 }
 
 // Suggested Strategies To Reduce Leftovers
-std::vector<std::string>& LeftoverReport::GetSuggestedStrategies() const {
+std::vector<std::string> LeftoverReport::GetSuggestedStrategies() const {
   return suggested_strategies_;
 }

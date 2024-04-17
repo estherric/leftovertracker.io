@@ -9,6 +9,7 @@
 // @estherric
 #include <vector>
 #include "leftover_record.h"
+#include "leftover_report.h"
 
 class LeftoverTracker {
   // ======================= YOUR CODE HERE =======================
@@ -21,21 +22,17 @@ class LeftoverTracker {
   // Remember that std::string is an object!
   // ===============================================================
  public:
-  // Constructor
-  LeftoverTracker();
-  // Destructor
-  ~LeftoverTracker();
   // AddLeftoverRecord
   bool AddLeftoverRecord(const LeftoverRecord& record);
   // DeleteLeftoverRecord
   bool DeleteLeftoverRecord(const LeftoverRecord& record);
   // GetAllLeftoverRecords
-  const std::vector<LeftoverRecord>& GetAllLeftoverRecords() const;
+  const std::vector<LeftoverRecord>& GetRecords() const;
   // GenerateLeftoverRecords
-  LeftoverReport GenerateLeftoverRecords() const;
+  LeftoverReport GetLeftoverReport() const;
 
  private:
-  std::vector<LeftoverRecord> records_;
+  std::vector<LeftoverRecord> leftover_records_;
 };
 
 #endif

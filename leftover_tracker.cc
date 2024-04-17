@@ -6,6 +6,8 @@
 // @estherric
 
 #include "leftover_tracker.h"
+#include "leftover_report.h"
+#include <algorithm>
 
 // ========================= YOUR CODE HERE =========================
 // This implementation file is where you should implement
@@ -26,32 +28,31 @@ LeftoverTracker::~LeftoverTracker() {}
 
 // AddLeftoverRecord
 bool LeftoverTracker::AddLeftoverRecord(const LeftoverRecord& record) {
-  for (const auto& existing_records : records_) {
+  std::vector<LeftoverRecord> records;
+  for (const auto& existing_records : records) {
     if (existing_records == record) {
       return false;
     }
   }
-  records_.push_back(record);
+  records.push_back(record);
   return true;
 }
 // DeleteLeftoverRecord
 bool LeftoverTracker::DeleteLeftoverRecord(const LeftoverRecord& record) {
-  auto it = std::find(records_.begin(), records_.end(), record);
-  if (it != records_.end()) {
-    records_.erase(it);
+  auto it = std::find(leftover_records_.begin(), leftover_records_.end(), record);
+  if (it != leftover_records_.end()) {
+    leftover_records_.erase(it);
     return true;
-  }
+  } else {
   return false;
+  }
 }
 // GetAllLeftoverRecords
-const std::vector<LeftoverRecord>& LeftoverTracker::GetAllLeftoverRecords() const {
-  return records_;
+const std::vector<LeftoverRecord>& LeftoverTracker::GetRecords() const {
+  return leftover_records_;
 }
 // GenerateLeftoverRecords
-LeftoverReport LeftoverTracker::GenerateLeftoverRecords() const {
-  Leftover Report report;
-  for (const auto& record : records_) {
-    record.AddRecord(record);
-  }
+LeftoverReport LeftoverTracker::GetLeftoverReport() const {
+  LeftoverReport report(leftover_records_);
   return report;
 }

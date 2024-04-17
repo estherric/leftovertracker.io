@@ -8,7 +8,9 @@
 // estheranne@csu.fullerton.edu
 // @estherric
 #include <vector>
-#include <iostream>
+#include <string>
+
+#include "leftover_record.h"
 
 class LeftoverReport {
   // ======================= YOUR CODE HERE =======================
@@ -37,7 +39,7 @@ class LeftoverReport {
   const std::vector<std::string> GetMostCommonReasons() const;
 
   // Most Common Disposal Mechanism
-  std::vector<std::string> GetMostCommonDisposalMechanism() const;
+  std::vector<std::string> GetMostCommonDisposalMechanisms() const;
 
   // Suggested Strategies To Reduce Leftovers
   std::vector<std::string> GetSuggestedStrategies() const;
@@ -46,7 +48,7 @@ class LeftoverReport {
   const std::vector<LeftoverRecord>& leftover_records_;
   std::vector<std::string> most_common_leftovers_;
   std::vector<std::string> most_costly_meals_;
-  double total_cost__of_leftovers_;
+  double total_cost_of_leftovers_;
   std::vector<std::string> most_common_reasons_;
   std::vector<std::string> most_common_disposal_mechanisms_;
   std::vector<std::string> suggested_strategies_;
