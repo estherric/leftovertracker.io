@@ -1,11 +1,13 @@
-// Please fill in below.
-// <Your name>
-// <Your section number> (e.g. CPSC 121L-01)
-// <Date>
-// <Your csu.fullerton.edu email>
-// <Your GitHub username>
+// DONE: please fill in below.
+// Esther Anne Ricardo
+// CPSC 121L-11
+// April 2, 2024
+// estheranne@csu.fullerton.edu
+// @estherric
 
 #include "leftover_report.h"
+
+#include <iostream>
 // ========================= YOUR CODE HERE =========================
 // This implementation file is where you should implement
 // the member functions declared in the header (leftover_report.h), only
@@ -18,3 +20,32 @@
 // to tell the compiler that each function belongs to the LeftoverReport
 // class.
 // ===================================================================
+// Most Common Leftovers
+const std::vector<std::string>& LeftoverReport::GetMostCommonLeftovers() const {
+  return most_common_leftovers_;
+}
+
+// Most Costly Meals
+const std::vector<std::string>& LeftoverReport::GetMostCostlyMeals() const {
+  return most_costly_meals_;
+}
+
+// Total Cost of Leftovers
+double std::vector<std::double> LeftoverReport::GetTotalCostOfLeftovers()
+    const {
+  return total_cost_of_leftovers_;
+}
+
+// Most Common Reasons of Leftovers
+std::vector<std::string>& LeftoverReport::GetMostCommonReasons() const {
+  return most_common_reasons_;
+}
+// Most Common Disposal Mechanism
+std::vector<std::string>& LeftoverReport::GetMostCommonDisposalMechanism() const {
+  return most_common_disposal_mechanisms_;
+}
+
+// Suggested Strategies To Reduce Leftovers
+std::vector<std::string>& LeftoverReport::GetSuggestedStrategies() const {
+  return suggested_strategies_;
+}

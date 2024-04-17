@@ -50,7 +50,7 @@ class LeftoverTrackerBackend {
   // format.
   const std::string &leftover_records_filepath_;
   // A top level class object to leftovers.
-  // TODO: Add a LeftoverTracker object as a member variable here. Make sure you stick
-  // to Google's style guide when naming your variable.
+  // TODO: Add a LeftoverTracker object as a member variable here. Make sure you
+  // stick to Google's style guide when naming your variable.
 };
 #endif
