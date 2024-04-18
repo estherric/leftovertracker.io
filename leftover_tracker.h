@@ -26,7 +26,7 @@ class LeftoverTracker {
   bool AddLeftoverRecord(const LeftoverRecord& record);
   // DeleteLeftoverRecord
   bool DeleteLeftoverRecord(const LeftoverRecord& record);
-  // GetAllLeftoverRecords
+  // GetRecords
   const std::vector<LeftoverRecord>& GetRecords() const;
   // GenerateLeftoverRecords
   LeftoverReport GetLeftoverReport() const;

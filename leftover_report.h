@@ -7,8 +7,8 @@
 // April 2, 2024
 // estheranne@csu.fullerton.edu
 // @estherric
-#include <vector>
 #include <string>
+#include <vector>
 
 #include "leftover_record.h"
 
@@ -23,20 +23,23 @@ class LeftoverReport {
   // Remember that std::string is an object!
   // ===============================================================
  public:
-  // Leftover Report
+  // Default Constructor LeftoverReport
+  LeftoverReport(std::vector<LeftoverRecord>::const_iterator begin_iter,
+                 std::vector<LeftoverRecord>::const_iterator end_iter);
+  // Non-Default Constructor Leftover Report
   LeftoverReport(const std::vector<LeftoverRecord>& leftover_records);
 
   // Most Common Leftovers
-  const std::vector<std::string> GetMostCommonLeftovers() const;
+  std::vector<std::string> GetMostCommonLeftovers() const;
 
   // Most Costly Meals
-  const std::vector<std::string> GetMostCostlyMeals() const;
+  std::vector<std::string> GetMostCostlyMeals() const;
 
   // Total Cost of Leftovers
   double GetTotalCostOfLeftovers() const;
 
   // Most Common Reasons of Leftovers
-  const std::vector<std::string> GetMostCommonReasons() const;
+  std::vector<std::string> GetMostCommonReasons() const;
 
   // Most Common Disposal Mechanism
   std::vector<std::string> GetMostCommonDisposalMechanisms() const;
@@ -45,7 +48,7 @@ class LeftoverReport {
   std::vector<std::string> GetSuggestedStrategies() const;
 
  private:
-  const std::vector<LeftoverRecord>& leftover_records_;
+  const std::vector<LeftoverRecord> leftover_records_;
   std::vector<std::string> most_common_leftovers_;
   std::vector<std::string> most_costly_meals_;
   double total_cost_of_leftovers_;

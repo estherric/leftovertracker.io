@@ -8,6 +8,7 @@
 #include "leftover_tracker.h"
 #include "leftover_report.h"
 #include <algorithm>
+#include <iostream>
 
 // ========================= YOUR CODE HERE =========================
 // This implementation file is where you should implement
@@ -21,20 +22,14 @@
 // to tell the compiler that each function belongs to the LeftoverTracker
 // class.
 // ===================================================================
-// Constructor
-LeftoverTracker::LeftoverTracker() {}
-// Destructor
-LeftoverTracker::~LeftoverTracker() {}
-
 // AddLeftoverRecord
 bool LeftoverTracker::AddLeftoverRecord(const LeftoverRecord& record) {
-  std::vector<LeftoverRecord> records;
-  for (const auto& existing_records : records) {
-    if (existing_records == record) {
+  for (const LeftoverRecord& existing_record : leftover_records_) {
+    if (existing_record == record) {
       return false;
     }
   }
-  records.push_back(record);
+  leftover_records_.push_back(record);
   return true;
 }
 // DeleteLeftoverRecord
@@ -47,12 +42,12 @@ bool LeftoverTracker::DeleteLeftoverRecord(const LeftoverRecord& record) {
   return false;
   }
 }
-// GetAllLeftoverRecords
+// GetRecords
 const std::vector<LeftoverRecord>& LeftoverTracker::GetRecords() const {
   return leftover_records_;
 }
 // GenerateLeftoverRecords
 LeftoverReport LeftoverTracker::GetLeftoverReport() const {
-  LeftoverReport report(leftover_records_);
+  LeftoverReport report(leftover_records_.begin(), leftover_records_.end());
   return report;
 }

@@ -15,7 +15,8 @@
 class LeftoverTrackerBackend {
  public:
   LeftoverTrackerBackend(const std::string &leftover_records_filepath)
-      : leftover_records_filepath_{leftover_records_filepath} {}
+      : leftover_records_filepath_{leftover_records_filepath},
+        leftover_tracker_{} {}
 
   // Reads the leftover records from the file at
   // leftover_records_filepath_, and loads those in memory. If the file is
@@ -52,5 +53,6 @@ class LeftoverTrackerBackend {
   // A top level class object to leftovers.
   // TODO: Add a LeftoverTracker object as a member variable here. Make sure you
   // stick to Google's style guide when naming your variable.
+  LeftoverTracker leftover_tracker_;
 };
 #endif

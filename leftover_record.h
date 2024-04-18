@@ -34,7 +34,7 @@ class LeftoverRecord {
 
   // Quantity in Oz
   double GetQuantityOz() const;
-  void SetQuantityOz(double quantity_oz);
+  void SetQuantityOz(double qty_in_oz);
 
   // Leftover Reason
   std::string GetLeftoverReason() const;
@@ -48,14 +48,17 @@ class LeftoverRecord {
   double GetCost() const;
   void SetCost(double cost);
 
- private:
-  std::string date_;
-  std::string meal_;
-  std::string food_name_;
-  double qty_in_oz_;
-  std::string leftover_reason_;
-  std::string disposal_mechanism_;
-  double cost_;
-};
+  // Overloaded Operator==
+  bool operator==(const LeftoverRecord& other) const;
+
+   private:
+    std::string date_;
+    std::string meal_;
+    std::string food_name_;
+    double qty_in_oz_;
+    std::string leftover_reason_;
+    std::string disposal_mechanism_;
+    double cost_;
+  };
 
 #endif

@@ -6,6 +6,7 @@
 // @estherric
 
 #include "leftover_report.h"
+#include "leftover_record.h"
 
 #include <iostream>
 // ========================= YOUR CODE HERE =========================
@@ -20,32 +21,39 @@
 // to tell the compiler that each function belongs to the LeftoverReport
 // class.
 // ===================================================================
-// Leftover Report
-LeftoverReport::LeftoverReport(const std::vector<LeftoverRecord>& leftover_records)
-    : leftover_records_(leftover_records) {}
+// Default Constructor LeftoverReport
+LeftoverReport::LeftoverReport(
+    std::vector<LeftoverRecord>::const_iterator begin_iter,
+    std::vector<LeftoverRecord>::const_iterator end_iter)
+    : leftover_records_(begin_iter, end_iter) {}
+
+// Non-default Constructor Leftover Report
+LeftoverReport::LeftoverReport(
+    const std::vector<LeftoverRecord>& leftover_records)
+    : leftover_records_(leftover_records.begin(), leftover_records.end()) {}
 
 // Most Common Leftovers
-const std::vector<std::string> LeftoverReport::GetMostCommonLeftovers() const {
+std::vector<std::string> LeftoverReport::GetMostCommonLeftovers() const {
   return most_common_leftovers_;
 }
 
 // Most Costly Meals
-const std::vector<std::string> LeftoverReport::GetMostCostlyMeals() const {
+std::vector<std::string> LeftoverReport::GetMostCostlyMeals() const {
   return most_costly_meals_;
 }
 
 // Total Cost of Leftovers
-double LeftoverReport::GetTotalCostOfLeftovers()
-    const {
+double LeftoverReport::GetTotalCostOfLeftovers() const {
   return total_cost_of_leftovers_;
 }
 
 // Most Common Reasons of Leftovers
-const std::vector<std::string> LeftoverReport::GetMostCommonReasons() const {
+std::vector<std::string> LeftoverReport::GetMostCommonReasons() const {
   return most_common_reasons_;
 }
 // Most Common Disposal Mechanism
-std::vector<std::string> LeftoverReport::GetMostCommonDisposalMechanisms() const {
+std::vector<std::string> LeftoverReport::GetMostCommonDisposalMechanisms()
+    const {
   return most_common_disposal_mechanisms_;
 }
 

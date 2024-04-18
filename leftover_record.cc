@@ -50,10 +50,21 @@ void LeftoverRecord::SetLeftoverReason(const std::string& leftover_reason) {
 std::string LeftoverRecord::GetDisposalMechanism() const {
   return disposal_mechanism_;
 }
-void LeftoverRecord::SetDisposalMechanism(const std::string& disposal_mechanism) {
+void LeftoverRecord::SetDisposalMechanism(
+    const std::string& disposal_mechanism) {
   disposal_mechanism_ = disposal_mechanism;
 }
 
 // Cost
 double LeftoverRecord::GetCost() const { return cost_; }
 void LeftoverRecord::SetCost(double cost) { cost_ = cost; }
+
+// Overloaded Operator==
+bool LeftoverRecord::operator==(const LeftoverRecord& other) const {
+  // Compare each member variable for equality
+  return (date_ == other.date_ && meal_ == other.meal_ &&
+          food_name_ == other.food_name_ && qty_in_oz_ == other.qty_in_oz_ &&
+          leftover_reason_ == other.leftover_reason_ &&
+          disposal_mechanism_ == other.disposal_mechanism_ &&
+          cost_ == other.cost_);
+}
