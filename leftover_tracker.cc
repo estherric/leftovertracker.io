@@ -6,9 +6,11 @@
 // @estherric
 
 #include "leftover_tracker.h"
-#include "leftover_report.h"
+
 #include <algorithm>
 #include <iostream>
+
+#include "leftover_report.h"
 
 // ========================= YOUR CODE HERE =========================
 // This implementation file is where you should implement
@@ -22,32 +24,49 @@
 // to tell the compiler that each function belongs to the LeftoverTracker
 // class.
 // ===================================================================
+// Default Constructor
+LeftoverTracker::LeftoverTracker() {}
+
 // AddLeftoverRecord
 bool LeftoverTracker::AddLeftoverRecord(const LeftoverRecord& record) {
-  for (const LeftoverRecord& existing_record : leftover_records_) {
-    if (existing_record == record) {
+  // Check if record exists already
+  for (const LeftoverRecord& r : records) {
+    if (r.GetDate() == record.GetDate() && r.GetMeal() == record.GetMeal() &&
+        r.GetFoodName() == record.GetFoodName() &&
+        r.GetQuantityOz() == record.GetQuantityOz() &&
+        r.GetLeftoverReason() == record.GetLeftoverReason() &&
+        r.GetDisposalMechanism() == record.GetDisposalMechanism() &&
+        r.GetCost() == record.GetCost()) {
       return false;
     }
   }
-  leftover_records_.push_back(record);
+
+  // No duplicate found, add the record
+  records.push_back(record);
   return true;
 }
+
 // DeleteLeftoverRecord
 bool LeftoverTracker::DeleteLeftoverRecord(const LeftoverRecord& record) {
-  auto it = std::find(leftover_records_.begin(), leftover_records_.end(), record);
-  if (it != leftover_records_.end()) {
-    leftover_records_.erase(it);
-    return true;
-  } else {
-  return false;
+  for (auto it = records.begin(); it != records.end(); ++it) {
+    if ((*it).GetDate() == record.GetDate() &&
+        (*it).GetMeal() == record.GetMeal() &&
+        (*it).GetFoodName() == record.GetFoodName() &&
+        (*it).GetQuantityOz() == record.GetQuantityOz() &&
+        (*it).GetLeftoverReason() == record.GetLeftoverReason() &&
+        (*it).GetDisposalMechanism() == record.GetDisposalMechanism() &&
+        (*it).GetCost() == record.GetCost()) {
+      records.erase(it);
+      return true;
+    }
   }
+  return false;
 }
 // GetRecords
-const std::vector<LeftoverRecord>& LeftoverTracker::GetRecords() const {
-  return leftover_records_;
+std::vector<LeftoverRecord> LeftoverTracker::GetAllRecords() const {
+  return records;
 }
 // GenerateLeftoverRecords
-LeftoverReport LeftoverTracker::GetLeftoverReport() const {
-  LeftoverReport report(leftover_records_.begin(), leftover_records_.end());
-  return report;
+LeftoverReport LeftoverTracker::GenerateLeftoverReport() const {
+  return LeftoverReport(records);
 }

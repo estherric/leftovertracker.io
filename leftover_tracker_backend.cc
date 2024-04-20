@@ -88,7 +88,6 @@ LeftoverRecord DeserializeLeftoverRecordFromJSON(
    */
   std::string date = json_obj["date_"].GetString();
   record.SetDate(date);
-  return record;
   /* TODO 2. Use the mutator/setter function for meal from the LeftoverRecord
    *  class to set the meal in `record` object. You can get the meal from JSON
    *  object as follows: `json_obj["meal_"].GetString()`.
@@ -96,7 +95,6 @@ LeftoverRecord DeserializeLeftoverRecordFromJSON(
    */
   std::string meal = json_obj["meal_"].GetString();
   record.SetMeal(meal);
-  return record;
   /* TODO 3. Use the mutator/setter function for food name from the
    * LeftoverRecord class to set the food name in `record` object. You can
    * get the food name from the JSON object as follows:
@@ -105,7 +103,6 @@ LeftoverRecord DeserializeLeftoverRecordFromJSON(
    */
   std::string food_name = json_obj["food_name_"].GetString();
   record.SetFoodName(food_name);
-  return record;
   /* TODO 4. Use the mutator/setter function for quantity from the
    * LeftoverRecord class to set the quantity in `record` object. You can get
    * the quantity from the JSON object as follows:
@@ -114,7 +111,6 @@ LeftoverRecord DeserializeLeftoverRecordFromJSON(
    */
   double quantity = json_obj["qty_in_oz_"].GetDouble();
   record.SetQuantityOz(quantity);
-  return record;
   /* TODO 5. Use the mutator/setter function for leftover reason from the
    * LeftoverRecord class to set the leftover reason in `record` object. You
    * can get the leftover reason from the JSON object as follows:
@@ -123,7 +119,6 @@ LeftoverRecord DeserializeLeftoverRecordFromJSON(
    */
   std::string leftover_reason = json_obj["leftover_reason_"].GetString();
   record.SetLeftoverReason(leftover_reason);
-  return record;
   /* TODO 6. Use the mutator/setter function for disposal mechanism from the
    * LeftoverRecord class to set the disposal mechanism in `record` object.
    * You can get the disposal mechanism from the JSON object as follows:
@@ -132,7 +127,6 @@ LeftoverRecord DeserializeLeftoverRecordFromJSON(
    */
   std::string disposal_mechanism = json_obj["disposal_mechanism_"].GetString();
   record.SetDisposalMechanism(disposal_mechanism);
-  return record;
   /* TODO 7. Use the mutator/setter function for cost from the LeftoverRecord
    *  class to set the cost in `record` object. You can get the cost from the
    * JSON object as follows: `json_obj["cost_"].GetDouble()`. Use that as an
@@ -180,7 +174,7 @@ crow::json::wvalue LeftoverRecordToCrowJSON(const LeftoverRecord &record) {
   // TODO 5. Use the accessor/getter function for leftover reason from the
   // LeftoverRecord class object to get the leftover reason and store it in
   // the leftover_reason string declared above.
-  leftover_reason = record.GetQuantityOz();
+  leftover_reason = record.GetLeftoverReason();
   record_json["leftover_reason"] = leftover_reason;
 
   std::string disposal_mechanism;
@@ -209,29 +203,29 @@ crow::json::wvalue LeftoverReportToCrowJSON(const LeftoverReport &report) {
   // TODO: Call the member function of LeftoverReport class that returns all
   // the most common disposal mechanisms as a vector of strings. Store the
   // result in the vector declared above.
-  most_common_disposal_mechanisms = report.GetMostCommonDisposalMechanisms();
+  most_common_disposal_mechanisms = report.MostCommonDisposalMechanisms();
   report_json["most_common_disposal_mechanism_"] =
       most_common_disposal_mechanisms;
 
   std::vector<std::string> most_common_leftovers{};
   // TODO: Call the member function of LeftoverReport class that returns all
   // the most common leftovers as a vector of strings. Store the result in
-  // the vector declared above.       
-  most_common_leftovers = report.GetMostCommonLeftovers();
+  // the vector declared above.
+  most_common_leftovers = report.MostCommonLeftovers();
   report_json["most_common_leftover_"] = most_common_leftovers;
 
   std::vector<std::string> most_common_leftover_reasons{};
   // TODO: Call the member function of LeftoverReport class that returns all
   // the most commonwastage reasons as a vector of strings. Store the result in
   // the vector declared above.
-  most_common_leftover_reasons = report.GetMostCommonReasons();
+  most_common_leftover_reasons = report.MostCommonReasons();
   report_json["most_common_leftover_reason_"] = most_common_leftover_reasons;
 
   std::vector<std::string> most_costly_leftover_producing_meals{};
   // TODO: Call the member function of LeftoverReport class that returns all
   // the most costly waste producing meals as a vector of strings. Store the
   // result in the vector declared above.
-  most_costly_leftover_producing_meals = report.GetMostCostlyMeals();
+  most_costly_leftover_producing_meals = report.MostCostlyMeals();
   report_json["most_leftover_producing_meal_"] =
       most_costly_leftover_producing_meals;
 
@@ -239,7 +233,7 @@ crow::json::wvalue LeftoverReportToCrowJSON(const LeftoverReport &report) {
   // TODO: Call the member function of LeftoverReport class that returns all
   // the suggested strategies as a vector of strings. Store the result in the
   // vector declared above.
-  suggested_strategies_to_reduce_leftover = report.GetSuggestedStrategies();
+  suggested_strategies_to_reduce_leftover = report.SuggestedStrategies();
   report_json["suggested_strategies_to_reduce_leftover_"] =
       suggested_strategies_to_reduce_leftover;
 
@@ -247,7 +241,7 @@ crow::json::wvalue LeftoverReportToCrowJSON(const LeftoverReport &report) {
   // TODO: Call the member function of LeftoverReport class that returns the
   // total cost of leftovers as a double. Store the result in the double
   // declared.
-  total_cost_of_leftover = report.GetTotalCostOfLeftovers();
+  total_cost_of_leftover = report.TotalCostOfLeftovers();
   report_json["total_cost_of_leftover_"] = total_cost_of_leftover;
 
   return report_json;
@@ -349,7 +343,7 @@ bool LeftoverTrackerBackend::WriteRecordsToJSONFile() const {
   // the LeftoverRecord objects. Store the returned records in the vector
   // declared above. Also change the data type of the records vector to `const
   // std::vector<LettoverRecord>&`.
-  records = leftover_tracker_.GetRecords();
+  records = leftover_tracker_.GetAllRecords();
 
   for (LeftoverRecord record : records) {
     SerializeLeftoverRecordToJSON(record, &writer);
@@ -402,7 +396,7 @@ crow::json::wvalue LeftoverTrackerBackend::GetRecords() const {
   // the LeftoverRecord objects. Store the returned records in the vector
   // declared above. Also change the data type of the records vector to `const
   // std::vector<LeftoverRecord>&`.
-  records = leftover_tracker_.GetRecords();
+  records = leftover_tracker_.GetAllRecords();
 
   crow::json::wvalue records_json({});
   records_json["num_records"] = records.size();
@@ -416,7 +410,8 @@ crow::json::wvalue LeftoverTrackerBackend::GetRecords() const {
 }
 
 crow::json::wvalue LeftoverTrackerBackend::GetLeftoverReport() const {
-  LeftoverReport generated_report(leftover_tracker_.GetRecords());;
+  LeftoverReport generated_report(leftover_tracker_.GenerateLeftoverReport());
+
   // TODO: Call the member function in the LeftoverTracker class, on the
   // member object that you added in leftover_tracker.h, that generates a
   // LeftoverReport object using all the LeftoverRecords and returns it.

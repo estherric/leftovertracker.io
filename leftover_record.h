@@ -20,16 +20,18 @@ class LeftoverRecord {
   // Remember that std::string is an object!
   // ===============================================================
  public:
+  // Deafult Constructor
+  LeftoverRecord();
   // Date
-  std::string GetDate() const;
+  const std::string& GetDate() const;
   void SetDate(const std::string& date);
 
   // Meal
-  std::string GetMeal() const;
+  const std::string& GetMeal() const;
   void SetMeal(const std::string& meal);
 
   // Food Name
-  std::string GetFoodName() const;
+  const std::string& GetFoodName() const;
   void SetFoodName(const std::string& food_name);
 
   // Quantity in Oz
@@ -37,11 +39,11 @@ class LeftoverRecord {
   void SetQuantityOz(double qty_in_oz);
 
   // Leftover Reason
-  std::string GetLeftoverReason() const;
+  const std::string& GetLeftoverReason() const;
   void SetLeftoverReason(const std::string& leftover_reason);
 
   // Disposal Mechanism
-  std::string GetDisposalMechanism() const;
+  const std::string& GetDisposalMechanism() const;
   void SetDisposalMechanism(const std::string& disposal_mechanism);
 
   // Cost
@@ -51,14 +53,14 @@ class LeftoverRecord {
   // Overloaded Operator==
   bool operator==(const LeftoverRecord& other) const;
 
-   private:
-    std::string date_;
-    std::string meal_;
-    std::string food_name_;
-    double qty_in_oz_;
-    std::string leftover_reason_;
-    std::string disposal_mechanism_;
-    double cost_;
-  };
+ private:
+  std::string date_;
+  std::string meal_;
+  std::string food_name_;
+  double qty_in_oz_;
+  std::string leftover_reason_;
+  std::string disposal_mechanism_;
+  double cost_;
+};
 
 #endif

@@ -15,8 +15,7 @@
 class LeftoverTrackerBackend {
  public:
   LeftoverTrackerBackend(const std::string &leftover_records_filepath)
-      : leftover_records_filepath_{leftover_records_filepath},
-        leftover_tracker_{} {}
+      : leftover_records_filepath_{leftover_records_filepath} {}
 
   // Reads the leftover records from the file at
   // leftover_records_filepath_, and loads those in memory. If the file is

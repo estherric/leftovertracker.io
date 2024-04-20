@@ -7,7 +7,6 @@
 
 #include "leftover_record.h"
 
-#include <iostream>
 // ========================= YOUR CODE HERE =========================
 // This implementation file is where you should implement
 // the member functions declared in the header (leftover_record.h), only
@@ -20,16 +19,26 @@
 // to tell the compiler that each function belongs to the LeftLeftoverRecord
 // class.
 // ===================================================================
+// Default Constructor
+LeftoverRecord::LeftoverRecord() {
+  date_ = "";
+  meal_ = "";
+  food_name_ = "";
+  qty_in_oz_ = 0.0;
+  leftover_reason_ = "";
+  disposal_mechanism_ = "";
+  cost_ = 0.0;
+}
 // Date
-std::string LeftoverRecord::GetDate() const { return date_; }
+const std::string& LeftoverRecord::GetDate() const { return date_; }
 void LeftoverRecord::SetDate(const std::string& date) { date_ = date; }
 
 // Meal
-std::string LeftoverRecord::GetMeal() const { return meal_; }
+const std::string& LeftoverRecord::GetMeal() const { return meal_; }
 void LeftoverRecord::SetMeal(const std::string& meal) { meal_ = meal; }
 
 // Food Name
-std::string LeftoverRecord::GetFoodName() const { return food_name_; }
+const std::string& LeftoverRecord::GetFoodName() const { return food_name_; }
 void LeftoverRecord::SetFoodName(const std::string& food_name) {
   food_name_ = food_name;
 }
@@ -39,7 +48,7 @@ double LeftoverRecord::GetQuantityOz() const { return qty_in_oz_; }
 void LeftoverRecord::SetQuantityOz(double qty_in_oz) { qty_in_oz_ = qty_in_oz; }
 
 // Leftover Reason
-std::string LeftoverRecord::GetLeftoverReason() const {
+const std::string& LeftoverRecord::GetLeftoverReason() const {
   return leftover_reason_;
 }
 void LeftoverRecord::SetLeftoverReason(const std::string& leftover_reason) {
@@ -47,7 +56,7 @@ void LeftoverRecord::SetLeftoverReason(const std::string& leftover_reason) {
 }
 
 // Disposal Mechanism
-std::string LeftoverRecord::GetDisposalMechanism() const {
+const std::string& LeftoverRecord::GetDisposalMechanism() const {
   return disposal_mechanism_;
 }
 void LeftoverRecord::SetDisposalMechanism(

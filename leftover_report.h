@@ -23,38 +23,35 @@ class LeftoverReport {
   // Remember that std::string is an object!
   // ===============================================================
  public:
-  // Default Constructor LeftoverReport
-  LeftoverReport(std::vector<LeftoverRecord>::const_iterator begin_iter,
-                 std::vector<LeftoverRecord>::const_iterator end_iter);
-  // Non-Default Constructor Leftover Report
-  LeftoverReport(const std::vector<LeftoverRecord>& leftover_records);
+  // Default Constructor
+  LeftoverReport() : records() {}
+  // Non-default Constructor
+  LeftoverReport(const std::vector<LeftoverRecord>& user_records)
+      : records(user_records) {}
 
   // Most Common Leftovers
-  std::vector<std::string> GetMostCommonLeftovers() const;
+  std::vector<std::string> MostCommonLeftovers() const;
 
   // Most Costly Meals
-  std::vector<std::string> GetMostCostlyMeals() const;
+  std::vector<std::string> MostCostlyMeals() const;
 
   // Total Cost of Leftovers
-  double GetTotalCostOfLeftovers() const;
+  double TotalCostOfLeftovers() const;
 
   // Most Common Reasons of Leftovers
-  std::vector<std::string> GetMostCommonReasons() const;
+  std::vector<std::string> MostCommonReasons() const;
 
   // Most Common Disposal Mechanism
-  std::vector<std::string> GetMostCommonDisposalMechanisms() const;
+  std::vector<std::string> MostCommonDisposalMechanisms() const;
 
   // Suggested Strategies To Reduce Leftovers
-  std::vector<std::string> GetSuggestedStrategies() const;
+  std::vector<std::string> SuggestedStrategies() const;
+
+  // = Operator Overload
+  LeftoverReport& operator=(const std::vector<std::string>& other);
 
  private:
-  const std::vector<LeftoverRecord> leftover_records_;
-  std::vector<std::string> most_common_leftovers_;
-  std::vector<std::string> most_costly_meals_;
-  double total_cost_of_leftovers_;
-  std::vector<std::string> most_common_reasons_;
-  std::vector<std::string> most_common_disposal_mechanisms_;
-  std::vector<std::string> suggested_strategies_;
+  std::vector<LeftoverRecord> records;
 };
 
 #endif

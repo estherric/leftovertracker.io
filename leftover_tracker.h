@@ -8,6 +8,7 @@
 // estheranne@csu.fullerton.edu
 // @estherric
 #include <vector>
+
 #include "leftover_record.h"
 #include "leftover_report.h"
 
@@ -22,17 +23,20 @@ class LeftoverTracker {
   // Remember that std::string is an object!
   // ===============================================================
  public:
+  // Defuault Constructor
+  LeftoverTracker();
+
   // AddLeftoverRecord
   bool AddLeftoverRecord(const LeftoverRecord& record);
   // DeleteLeftoverRecord
   bool DeleteLeftoverRecord(const LeftoverRecord& record);
   // GetRecords
-  const std::vector<LeftoverRecord>& GetRecords() const;
+  std::vector<LeftoverRecord> GetAllRecords() const;
   // GenerateLeftoverRecords
-  LeftoverReport GetLeftoverReport() const;
+  LeftoverReport GenerateLeftoverReport() const;
 
  private:
-  std::vector<LeftoverRecord> leftover_records_;
+  std::vector<LeftoverRecord> records;
 };
 
 #endif
